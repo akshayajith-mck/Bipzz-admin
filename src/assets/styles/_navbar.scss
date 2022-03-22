@@ -1,0 +1,26 @@
+.navbar{
+  align-items: baseline !important;
+
+}
+
+.navbar-brand{
+  background: #ffffff;
+  text-align: center;
+  width:25%;
+  img{
+      width: 50%;
+  }
+}
+.brand-logo-mini{
+  display: none !important;
+  @media (max-width:992px) {
+      display: inline;
+  }
+}
+.brand-logo{
+      display: none;
+     
+  @media (min-width:992px) {
+      display: inline;
+  }
+}

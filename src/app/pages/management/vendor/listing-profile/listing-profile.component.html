@@ -1,0 +1,54 @@
+<p-toast position="top-right"></p-toast>
+<p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" position="top-center" [baseZIndex]="10000">
+</p-confirmDialog>
+<!-- {{profileData|json}} -->
+<div class="container-fluid profile d-flex">
+    <div class="hover border-blue">
+        <div class="content">
+            <div class="content-overlay"></div>
+            <img class="content-image img-fluid"
+                [src]="(profileData&&![null,'NA',undefined].includes(profileData.Image)?baseUrl+profileData.Image:'assets/img/dummy.png')"
+                onError='this.src="assets/img/dummy.png"'>
+            <div class="content-details fadeIn-top">
+                <!--  -->
+                <input type="file" style="display: none" #fileInput accept="image/*" (change)="onFileChangeInput()" />
+                <button mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
+                    Change Profile Picture
+                    <mat-icon>attach_file</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="brand">
+        <h3 class="font-weight-bold">{{profileData&&profileData.fullName?profileData.fullName:'N/A'}}</h3>
+        <h4 class="">Doctor Id: <span class="font-weight-bold">{{profileId}}</span></h4>
+        <h4 class="">Facilitator Name: <span
+                class="font-weight-bold">{{profileData&&profileData.workingAt?profileData.workingAt:'N/A'}}</span></h4>
+        <h4 class="">Mobile No: <span
+                class="font-weight-bold">{{profileData&&profileData.mobileNo?profileData.mobileNo:'N/A'}}</span></h4>
+        <h4 class="">Email: <span
+                class="font-weight-bold">{{profileData&&profileData.email?profileData.email:'N/A'}}</span></h4>
+        <h4 class="">Nationality: <span
+                class="font-weight-bold">{{profileData&&profileData.nationality?profileData.nationality:'N/A'}}</span>
+        </h4>
+        <h4 class="">Experience: <span
+                class="font-weight-bold">{{profileData&&profileData.experience?profileData.experience:0}}</span>
+        </h4>
+        <h4 class="">Fees: <span
+                class="font-weight-bold">{{profileData&&profileData.fees?profileData.fees:'N/A'}}</span>
+        </h4>
+        <h4 class="">Languages: <span
+                class="font-weight-bold">{{profileData&&profileData.languages?profileData.languages:'N/A'}}</span>
+        </h4>
+        <h4 class="">Department Id: <span
+                class="font-weight-bold">{{profileData&&profileData.departmentId?profileData.departmentId:'N/A'}}</span>
+        </h4>
+        <h4 class="">Department: <span
+                class="font-weight-bold">{{profileData&&profileData.department?profileData.department:'N/A'}}</span>
+        </h4>
+    </div>
+</div>

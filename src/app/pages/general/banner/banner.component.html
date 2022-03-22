@@ -1,0 +1,36 @@
+<div class="content-wrapper">
+    <p-toast position="top-center"></p-toast>
+
+    <div class="content-wrapper">
+        <div class="row m-3 justify-content-between flex-row-reverse">
+            <button class=" float-right  btn customButtonBlue" type="button" (click)="onAdd();">
+                <i class="pi pi-plus-circle"></i>Add
+            </button>
+            <button class=" float-right  btn customButtonBlue" type="button" (click)="getBanner();">
+                <i class="pi pi-refresh"></i>Refresh
+            </button>
+        </div>
+        <div class="row mt-5">
+            <div class="col alert alert-danger text-center" *ngIf="err || !bannerData ||bannerData.length<=0 ">
+                No Data Found
+            </div>
+            <div *ngIf="bannerData && !err" class="row justify-content-between">
+
+                <div class="card m-2" style="max-width: 320px;" *ngFor="let item of bannerData">
+                    <div class="card-body text-center">
+                        <img class="img-fluid" [src]="baseurl+item.path" onError='this.src="assets/img/dummy.png"'>
+                        <span class="text-center">
+                            {{item.sliderName}}
+                        </span>
+                    </div>
+                    <div class="card-footer border-0 row justify-content-between text-center">
+                        <button class="m-1 btn btn-outline-primary" type="button" (click)='onclick(item)'>Change</button>
+                        <button class="m-1 btn btn-outline-danger" (click)="onDelete(item._id)">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,49 @@
+<div class="global-container">
+    <p-toast position="top-center"></p-toast>
+    <div class="card login-form mx-auto mt-5">
+        <div class="card-header">
+            <h3>Send Flash Notifications</h3>
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit(flashPromotionForm.value)" [formGroup]="flashPromotionForm">
+                <mat-form-field appearance="legacy" class="example-full-width">
+                    <mat-label>Title</mat-label>
+                    <input matInput formControlName='title' placeholder="Please enter your Title">
+                    <mat-error *ngIf="flashPromotionForm.controls['title'].hasError('required')">
+                        Please enter a valid Title
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy" class="example-full-width">
+                    <mat-label>Type</mat-label>
+                    <mat-select formControlName='type'>
+                        <mat-option [value]="item.value" *ngFor="let item of typeSelect">{{item.title}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="form-group">
+                    <input type="file" style="display: none" #fileInput accept="image/*" (change)="onFileChangeInput()" />
+                    <button type="button" mat-raised-button color="fill" class="file-select-button" (click)="onClickFileInputButton()">
+                        Set Notification Image
+                        <mat-icon>attach_file</mat-icon>
+                    </button>
+                    <mat-label class="m-4" *ngIf="this.flashPromotionForm.get('Image').value">{{this.flashPromotionForm.get('Image').value.name}}</mat-label>
+                </div>
+                <mat-form-field appearance="legacy" class="example-full-width">
+                    <mat-label>Message</mat-label>
+                    <textarea matInput rows="5" formControlName='message' placeholder="Please enter your Message">
+                        </textarea>
+                    <mat-error *ngIf="flashPromotionForm.controls['message'].hasError('required')">
+                        Please enter a valid Message
+                    </mat-error>
+                </mat-form-field>
+                <button type="submit" mat-raised-button class="col btn customButtonBlue" [disabled]="flashPromotionForm.controls['message'].hasError('required') ||
+                    flashPromotionForm.controls['type'].hasError('required') ||
+                    flashPromotionForm.controls['title'].hasError('required')">
+                    Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+</div>

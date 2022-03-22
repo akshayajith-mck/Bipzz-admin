@@ -1,0 +1,31 @@
+<div class="global-container">
+    <p-toast position="top-center"></p-toast>
+
+    <div class="card login-form">
+        <div class='bg-white customBorder text-center'>
+            <img src="./assets/img/icon.svg" class="img-fluid m-auto">
+        </div>
+        <div class="card-body">
+            <form [formGroup]="loginForm" novalidate="" (ngSubmit)="onSubmit(loginForm.value)">
+                <h1 class="text-center text-uppercase">Login</h1>
+                <mat-form-field appearance="legacy" class="example-full-width mb-2">
+                    <mat-label>userName</mat-label>
+                    <input matInput formControlName='userName' placeholder="Enter your userName">
+                    <mat-error *ngIf="!loginForm.controls['userName'].valid">
+                        Please enter your userName.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="legacy" class="example-full-width mb-2">
+                    <mat-label>password</mat-label>
+                    <input type='password' matInput formControlName='password' placeholder="Enter your password">
+                    <mat-error *ngIf="!loginForm.controls['password'].valid">
+                        Please enter your password.
+                    </mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button [disabled]="!loginForm.value.userName || !loginForm.value.password" class="col btn customButtonBlue">Login</button>
+            </form>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,35 @@
+::ng-deep .mat-header-row {
+    background: #364696;
+    color: #ffffff;
+}
+
+::ng-deep .mat-header-cell {
+    color: #ffffff;
+    font-size: 1.15em;
+    padding-left: 1% !important;
+    justify-content: center;
+}
+
+::ng-deep .mat-cell {
+    &:first-child{
+        justify-content: center;
+    }
+    &:last-child{
+        justify-content: space-around;
+    }
+}
+
+mat-card {
+    border-radius: 7px !important;
+    box-shadow: 0px 5px 27px rgba(191, 0, 255, 0.2) !important;
+    padding: 0 !important;
+}
+
+.table-responsive {
+    border-radius: 7px;
+}
+
+img{
+    width: 70px !important;
+    height: 70px;
+}

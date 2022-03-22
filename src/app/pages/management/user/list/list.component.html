@@ -1,0 +1,18 @@
+<div class="content-wrapper">
+    <div class="m-3 row justify-content-between flex-row-reverse">
+        <button class="float-right btn customButtonBlue" type="button" (click)="show()">
+            <i class="pi pi-user-plus"></i> Add
+        </button>
+        <button class="float-right  btn customButtonBlue" type="button" (click)="refresh=false;getUserDetails();">
+            <i class="pi pi-refresh"></i> Refresh
+        </button>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretched-card">
+            <app-card [flag]='"userList"' [title]='"User List"' [type]='userList?"tableType":"error"'
+                [inputData]='userList?userList:err'>
+            </app-card>
+        </div>
+    </div>
+</div>

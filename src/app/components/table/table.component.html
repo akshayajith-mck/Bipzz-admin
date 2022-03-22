@@ -1,0 +1,82 @@
+<!-- <div class=" col-sm-12 table-responsive">
+    <p-toast position="top-right"></p-toast>
+
+    {{tableValue|json}}
+    <br>
+
+
+    <table class="table table-fixed table-hover table-bordered text-center" *ngIf="inputData.length>0">
+        <thead style="position: sticky;top: 0">
+            <tr>
+                <th scope="col" *ngFor="let head of tableHeads">
+                    <span class="btn"
+                        *ngIf="['id','status','appointmentName','facilitatorName','listName','Budget','Amount','CategoryType','AppointmentType','userType','userBudget','name','Name','userName','JoinedDate','OwnedBy'].includes(head)"
+                        (click)='refresh=false;rotate(head)'>
+                        {{head}}
+                    </span>
+                    <span class="btn "
+                        *ngIf="!['id','status','appointmentName','facilitatorName','listName','Budget','Amount','CategoryType','AppointmentType','userType','userBudget','name','Name','userName','JoinedDate','OwnedBy'].includes(head)">
+                        {{head}}
+                    </span>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody *ngIf="refresh">
+            <tr scope='row' *ngFor="let data of tableValue" class="hover">
+                <td *ngFor="let head of tableHeads" [ngClass]="head==='Image'?'py-1':'cursor-pointer'">
+                    <img (click)="onClickFn(data.id,'nav',null)" *ngIf="head=='Image'"
+                        [src]="(![null,'NA',undefined].includes(data.Image)?baseurl+data[head]:'assets/img/dummy.png')"
+                        onError='this.src="assets/img/dummy.png"' [title]="baseurl+data[head]" [alt]="data.id">
+                    <span *ngIf="(head!='Image')">
+                        <span
+                            *ngIf="!['status','isVerified','id','name','Name','facilitatorName','appointmentName','listName','rating'].includes(head) && flag!='quoteData'">{{data[head]?data[head]:'NA'}}</span>
+                        <span class="nav-link" *ngIf="!['status','id'].includes(head) &&flag==='quoteData'"
+                            (click)='quoteNavi(data,head)'>{{data[head]?data[head]:'NA'}}</span>
+                        <span class="nav-link" *ngIf="['id'].includes(head) &&flag==='quoteData'">
+                            {{data[head]?data[head]:'NA'}}</span>
+                        <span class="nav-link"
+                            *ngIf="['id','name','Name','facilitatorName','appointmentName','listName'].includes(head) &&!['status','rating'].includes(head) && flag!='quoteData'"
+                            (click)="onClickFn(data.id, 'nav',null) "> {{data[head]?data[head]:'NA'}}</span>
+                        <span *ngIf=" head=='status' ">
+                            <span
+                                *ngIf="['userAppointments','ongoingAppointments', 'facilitatorList', 'nonfacilitatorList', 'nonDoctor', 'doctorverified', 'appointmentList', 'quoteData', 'facilitatorListOnFacilitatorProfile', 'userReport', 'facilitatorReport', 'listReport', 'appointmentReport'].includes(flag) ">
+                                {{data[head]?data[head]:'NA'}}</span>
+                            <button
+                                *ngIf="![ 'userAppointments','ongoingAppointments', 'facilitatorList', 'doctorverified', 'appointmentList', 'complaintList', 'quoteData', 'facilitatorListOnFacilitatorProfile', 'userReport', 'facilitatorReport', 'listReport', 'appointmentReport'].includes(flag); "
+                                class="btn
+                        " [ngClass]="data.status==='active' ? 'btn-inverse-success': 'btn-inverse-danger' || data.isVerified==true? 'btn-success': 'btn-danger' "
+                                (click)=" data.status=(data.status!='active' )? 'active': 'inactive'; onClickFn(data.id, 'status',data.status) ">{{data[head]}}</button>
+                            <button type="submit " class="btn " *ngIf="flag=='complaintList' "
+                                (click)='(data.status==="Open ")?data.status="Resolved ":null; statusChange(data.id,"Resolved ")'
+                                [ngClass]="data.status==='Open' ? 'btn-inverse-info':
+                        'btn-inverse-secondary' ">
+                                {{data[head]}}
+                            </button>
+                        </span>
+                        <span *ngIf="['rating'].includes(head)">
+                            <mat-star-rating [rating]="data[head]?.score"></mat-star-rating>
+                            ({{data[head]?.ratingCount}})
+
+                        </span>
+                        <span
+                            *ngIf="head=='isVerified' && ![ 'Image', 'status', 'id'].includes(head) && flag!='facilitatorList' ">
+                            <button class="btn " type="submit "
+                                [class]="data.isVerified==true?'btn-success':'btn-danger'"
+                                (click)="data.isVerified=(data.isVerified!=true)?true:false;onClickFn(data.id, 'verify',data.isVerified) ">{{data.isVerified==true?'Approved':"Reject"}}</button>
+                        </span>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf=" [ 'userList', 'userAppointments', 'facilitatorList', 'nonfacilitatorList', 'nonDoctor', 'doctorverified', 'appointmentList', 'complaintList', 'recentUsers', 'recentFacilitators', 'ongoingAppointments', 'quoteData', 'facilitatorListOnFacilitatorProfile','facilitatorProfileDoctor', 'userReport',
+                        'facilitatorReport', 'listReport', 'appointmentReport'].includes(flag) ">
+    <mat-paginator #paginate [length]="collectionSize" [pageSize]="pageSize" showFirstLastButtons
+        [pageSizeOptions]="[5, 10, 25,50, 100]" (page)="pageChange($event)">
+    </mat-paginator>
+</div>
+
+
+<div *ngIf=" inputData.length<0 || !inputData " class="alert alert-warn ">{{error}}</div> -->

@@ -1,0 +1,13 @@
+<div class="content-wrapper">
+    <div class="m-3 row justify-content-between flex-row-reverse">
+        <button class="float-right btn customButtonBlue" type="button" (click)="refresh=false;getQuotes();">
+            <i class="pi pi-refresh"></i> Refresh
+        </button>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretched-card">
+            <app-card *ngIf="refresh" [flag]='"quoteData"' [title]='"Quote List"' [type]='quoteData?"tableType" :"error"' [inputData]='quoteData'>
+            </app-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="content-wrapper">
+    <div class="m-3 row justify-content-between flex-row-reverse">
+        <!-- <button type="button" (click)="show()" pButton icon="pi pi-user-plus" label="Add"></button> -->
+        <button class="float-right  btn customButtonBlue" type="button" (click)="refresh=false;getDoctors();">
+            <i class="pi pi-refresh"></i>Refresh
+        </button>
+    </div>
+    <!-- {{nonDoctorData|json}} -->
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretched-card">
+            <app-card *ngIf="refresh" [flag]='"nonDoctorData"' [title]='"Doctors to Approve"' [type]='nonDoctorData?"tableType":"error"' [inputData]='nonDoctorData?nonDoctorData:err'>
+            </app-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="card card-rounded">
+
+    <div class="card-header bg-customPrimary">
+        <h4>{{title}}</h4>
+    </div>
+    <div class="card-body" [ngSwitch]='type'>
+        <div class="col-sm-12" *ngSwitchCase="'tableType'">
+            <app-new-table [inputData]='inputData' [flag]='flag'>
+            </app-new-table>
+        </div>
+        <div class="col-md-12" *ngSwitchCase="'bannerCall'">
+            <app-carousel [flag]='flag'></app-carousel>
+        </div>
+        <div class="col-md-12" *ngSwitchCase="'faqForm'">
+            <app-faq-creation></app-faq-creation>
+        </div>
+        <div class="col-md-12" *ngSwitchCase="'promotionForm'">
+            <app-promotion-creation></app-promotion-creation>
+        </div>
+
+
+        <p class=" alert alert-danger text-center" *ngSwitchCase="'error'">No Data Found</p>
+        <p class="alert alert-danger text-center" *ngSwitchDefault>Oops Something went wrong</p>
+    </div>
+</div>

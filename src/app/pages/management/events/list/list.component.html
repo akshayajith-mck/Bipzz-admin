@@ -1,0 +1,14 @@
+<div class="content-wrapper">
+    <div class="m-3 row justify-content-between flex-row-reverse">
+
+        <!-- {{appointmentList|json}} -->
+        <button class="float-right btn customButtonBlue" type="button" (click)="refresh=false;getAppointmentDetails();">
+            <i class="pi pi-refresh"></i> Refresh</button>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretched-card">
+            <app-card *ngIf="refresh" [flag]='"appointmentList"' [title]='"Appointments List"' [type]='appointmentList?"tableType" :"error"' [inputData]='appointmentList'>
+            </app-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="container-fluid">
+    <p-toast position="top-right"></p-toast>
+    <button class="float-right  btn customButtonBlue" type="button" (click)="refresh=false;userProfile(profileId);">
+        <i class="pi pi-refresh"></i> Refresh
+    </button>
+    <div *ngIf="!err && profileData" class="clear-fix profile">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <div class="hover border-blue">
+                <div class="content">
+                    <div class="content-overlay"></div>
+                    <img class="content-image img-fluid" [src]="baseurl+profileData.Image"
+                        onError='this.src="assets/img/dummy.png"'>
+                    <div class="content-details fadeIn-top">
+                        <!--  -->
+                        <input type="file" style="display: none" #fileInput accept="image/*"
+                            (change)="onFileChangeInput()" />
+                        <button mat-raised-button color="primary" class="file-select-button"
+                            (click)="onClickFileInputButton()">
+                            Change Profile Picture
+                            <mat-icon>attach_file</mat-icon>
+
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {{profileData |json}}
+            <div class="brand">
+                <h3 class="font-weight-bold">
+                    <span>{{profileData&&profileData.fName?profileData.fName:'NA'}}</span>
+                    <span class="ml-1">{{profileData&&profileData.lName?profileData.lName:'NA'}}</span>
+                </h3>
+                <h4 class="">User Id: <span class="font-weight-bold">{{profileId}}</span></h4>
+                <h4 class="">Email: <span
+                        class="font-weight-bold">{{profileId&&profileData.email?profileData.email:'NA'}}</span></h4>
+                <h4 class="">Mobile No: <span
+                        class="font-weight-bold">{{profileId&&profileData.mobileNo?profileData.mobileNo:'NA'}}</span>
+                </h4>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item pl-3">
+                    <button type="button" class="btn btn-outline-primary" (click)="statusChange(profileData.status)"
+                        [ngClass]="profileData.status.toLowerCase()==='active'?'btn-inverse-success':'btn-inverse-danger'">
+                        <i class="mdi mdi-24px mdi-account-convert"></i>
+                        {{profileData?profileData.status:'status'}}
+                    </button>
+                </li>
+                <li class="nav-item pl-3">
+                    <button type="submit" class="btn customButtonBlue" (click)='show()'>
+                        <i class="mdi mdi-24px mdi-account-edit"></i>Edit
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <div class="card">
+            <div class="card-body">
+                <div class="row justify-content-between">
+                    <div class="col-3">
+                        <ul class="list-star">
+                            <li> Blood Group :<span class="font-weight-bold">
+                                    {{profileData&&profileData.bloodGroup?profileData.bloodGroup:'N/A'}}
+                                </span>
+                            </li>
+                            <li> Address :<span class="font-weight-bold">
+                                    {{profileData&&profileData.address1?profileData.address1:'N/A'}},
+                                    {{profileData&&profileData.address2?profileData.address2:''}}</span></li>
+                            <li> City :<span class="font-weight-bold">
+                                    {{profileData&&profileData.city?profileData.city:'N/A'}}</span></li>
+                            <li> Country :<span class="font-weight-bold">
+                                    {{profileData&&profileData.country?profileData.country:'N/A'}}</span></li>
+                            <li> Joined Date :<span class="font-weight-bold">
+                                    {{profileData&&profileData.dob?profileData.dob:'N/A'}}
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-3">
+                        <ul class="list-star">
+                            <li> Number Of Appointments Created :<span class="font-weight-bold">
+                                    {{profileData&&profileData.createdAppointments?profileData.createdAppointments:0}}</span>
+                            </li>
+                            <li> Reviewed :<span class="font-weight-bold">
+                                    {{profileData&&profileData.reviewedAppointments?profileData.reviewedAppointments:0}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix mt-2" *ngIf="!err && profileData">
+        <app-card [inputData]='inputData' [title]='"Appointments List"' [type]='inputData?"tableType":"error"'
+            [flag]='"userAppointments"'></app-card>
+    </div>
+
+</div>

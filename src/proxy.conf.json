@@ -1,0 +1,7 @@
+{
+    "/server/*": {
+        "target": "http://15.185.40.175",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

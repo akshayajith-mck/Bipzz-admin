@@ -1,0 +1,178 @@
+<p-toast position="top-right"></p-toast>
+<p-confirmDialog [style]="{width: '50vw'}" key="positionDialog" position="top-center" [baseZIndex]="10000">
+</p-confirmDialog>
+<div class="container-fluid profile">
+    <!-- {{profileData |json}} -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="hover border-blue">
+            <div class="content">
+                <div class="content-overlay"></div>
+                <img class="content-image img-fluid"
+                    [src]="profileData?baseUrl+profileData.Image:'assets/img/dummy.png'"
+                    onError='this.src="assets/img/dummy.png"'>
+                <div class="content-details fadeIn-top">
+                    <!--  -->
+                    <input type="file" style="display: none" #fileInput accept="image/*"
+                        (change)="onFileChangeInput()" />
+                    <button mat-raised-button color="primary" class="file-select-button"
+                        (click)="onClickFileInputButton()">
+                        Change Profile Picture
+                        <mat-icon>attach_file</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="brand">
+            <h2>
+                {{profileData&&profileData.patientName?profileData.patientName:'N/A'}}
+            </h2>
+            <h3 class="">Appointment Id: <span>{{profileId}}</span></h3>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item pl-3">
+                <span class="text-primary">
+                    Appointments On:
+                    <span class="font-weight-bolder">
+                        {{profileData&&profileData.booking_StartDate?profileData.booking_StartDate:'N/A'}}</span>
+                </span>
+            </li>
+        </ul>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    <ul class="border-0">
+                        <li class="list-group-item "> User Id:
+                            <span class="font-weight-bold">
+                                {{profileData&&profileData.userId?profileData.userId:'N/A'}}
+                            </span>
+                        </li>
+                        <li class="list-group-item "> Doctors Id:
+                            <span class="font-weight-bold">
+                                {{profileData&&profileData.doctorId?profileData.doctorId:'N/A'}}
+                            </span>
+                        </li>
+                        <li class="list-group-item "> Doctors Name:
+                            <span class="font-weight-bold">
+                                {{profileData&&profileData.doctorName?profileData.doctorName:'N/A'}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <ul class="list-star list-group">
+                        <li class="list-group-item "> Facilitator Id:
+                            <span class="font-weight-bold">
+                                {{profileData&&profileData.facilitatorId?profileData.facilitatorId:'NA'}}
+                            </span>
+                        </li>
+                        <li class="list-group-item "> Hospital:
+                            <span class="font-weight-bold">
+                                {{profileData&&profileData.hospital?profileData.hospital:'N/A'}}
+                            </span>
+                        </li>
+                        <li class="list-group-item "> Department:
+                            <span class="font-weight-bold">
+                                {{profileData&&profileData.department?profileData.department:'N/A'}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <ul class="list-star list-group">
+                        <li class="list-group-item "> Status:
+                            <span class="font-weight-bold">
+                                {{profileData&&profileData.status?profileData.status:'N/A'}}
+                            </span>
+                        </li>
+                        <li class="list-group-item "> Booking Start Date:
+                            <span class="font-weight-bold">
+                                {{profileData&&profileData.booking_StartDate?profileData.booking_StartDate:'N/A'}}
+                            </span>
+                        </li>
+                        <li class="list-group-item "> Booking End Date:
+                            <span class="font-weight-bold">
+                                {{profileData&&profileData.booking_EndDate?profileData.booking_EndDate:'N/A'}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="clearfix mt-5 d-flex justify-content-between">
+        <div class="col-4">
+            <ul class=" list-group">
+                <h3 class="text-center  list-group-item font-weight-bolder">
+                    Admins Involved
+                </h3>
+                <li class="list-group-item alert alert-danger text-center" *ngIf="err.appointmentAdmins">No Data Found
+                </li>
+                <div *ngIf="!err.appointmentAdmins">
+                    <li class="list-group-item list-group-item-action flex-column align-items-start justify-content-between"
+                        *ngFor="let item of adminsData" [routerLink]="['/pages/management/user/profile']"
+                        [queryParams]='{profileId:item.userId}'>
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">
+                                {{item.name}}
+                            </h5>
+                            <small>
+                                <img class="float-right w-25 rounded-circle img-fluid "
+                                    onError='this.src="assets/img/dummy.png"' [src]="baseUrl+item.img"
+                                    [alt]="item.name">
+                            </small>
+                        </div>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <div class="col-4">
+            <ul class="list-group">
+                <h3 class="list-group-item font-weight-bolder">
+                    Facilitator Involved
+                </h3>
+                <li class="list-group-item alert alert-danger text-center" *ngIf="err.facilitatorData">No Data Found
+                </li>
+                <div *ngIf="!err.facilitatorData">
+                    <li class="list-group-item list-group-item-action flex-column align-items-start justify-content-between"
+                        *ngFor="let item of facilitatorData" [routerLink]="['/pages/management/facilitator/profile']"
+                        [queryParams]='{profileId:item.id}'>
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">
+                                {{item.name}}
+                            </h5>
+                            <small>
+                                <img class="float-right w-25 rounded-circle img-fluid " [src]="baseUrl+item.img"
+                                    onError='this.src="assets/img/dummy.png"' [alt]="item.name">
+                            </small>
+                        </div>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <div class="col-4">
+            <ul class=" list-group">
+                <h3 class="list-group-item font-weight-bolder">
+                    Program List
+                </h3>
+                <li *ngIf="err.programData" class="list-group-item">No Data Found
+                </li>
+                <div *ngIf="!err.programData">
+                    <li class="list-group-item list-group-item-action" (click)='liveUpdate(item.id)'
+                        *ngFor="let item of programData">
+                        {{item.name}}
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div> -->
+
+</div>
+<div class="mt-5">
+    <!-- {{programData|json}} -->
+</div>
