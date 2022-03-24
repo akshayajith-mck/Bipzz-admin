@@ -1,5 +1,5 @@
 ::ng-deep .mat-header-row {
-    background: #364696;
+    background: #0097A7;
     color: #ffffff;
 }
 
@@ -32,4 +32,12 @@ mat-card {
 img{
     width: 70px !important;
     height: 70px;
+}
+
+
+.mat-row{
+    &:hover{
+        background: rgba(0, 151, 167,0.3);
+        transition: 0.35s ease;
+    }
 }

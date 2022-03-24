@@ -1,5 +1,4 @@
-import { DoctorTable } from "./../tableModel";
-import { ModalComponent } from "./../../../../components/modal/modal.component";
+import { UserTable } from "./../tableModel";
 import { DataService } from "./../../../../services/data.service";
 import { Component, OnInit } from "@angular/core";
 import { MessageService } from "primeng/api";
@@ -11,7 +10,7 @@ import { DynamicDialogRef, DialogService } from "primeng/dynamicdialog";
   providers: [DialogService, MessageService],
 })
 export class ListComponent implements OnInit {
-  userList: DoctorTable[];
+  userList: UserTable[];
   err: any;
   refresh = true;
   constructor(
@@ -24,10 +23,10 @@ export class ListComponent implements OnInit {
     this.getUserDetails();
   }
   getUserDetails(): void {
-    this.Data.getUserData().subscribe(
+    this.Data.getUsers().subscribe(
       (data: any) => {
         console.log(data);
-        this.userList = data?.userData;
+        this.userList = data;
         this.refresh = true;
       },
       (err) => {
@@ -41,17 +40,5 @@ export class ListComponent implements OnInit {
         });
       }
     );
-  }
-
-  show() {
-    this.ref = this.dialogService.open(ModalComponent, {
-      header: "User Creation",
-      width: "50vw",
-      data: {
-        flag: "userCreation",
-      },
-      contentStyle: { "max-height": "750px", overflow: "auto" },
-      baseZIndex: 10000,
-    });
   }
 }

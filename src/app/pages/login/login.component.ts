@@ -29,12 +29,12 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit(data) {
-    if (!data.userName  || !data.password) {
+    if (!data.userName || !data.password) {
       this.alertdan = true;
     }
     this.dataSer.loginSubmit(data).subscribe(
       (succ) => {
-console.log(succ)
+        console.log("succes",succ);
         localStorage.setItem("AccessToken", succ.AccessToken);
         this.messageService.add({
           severity: "success",

@@ -1,12 +1,20 @@
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 @include mat-core();
 $panel-primary: mat-palette($mat-indigo);
 $panel-accent: mat-palette($mat-pink, A200, A100, A400);
 $panel-warn: mat-palette($mat-red);
-$panel-theme: mat-light-theme((color: (primary: $panel-primary, accent: $panel-accent, warn: $panel-warn, )));
+$panel-theme: mat-light-theme(
+    (
+        color: (
+            primary: $panel-primary,
+            accent: $panel-accent,
+            warn: $panel-warn,
+        ),
+    )
+);
 @include angular-material-theme($panel-theme);
-@import './assets/fonts/fonts';
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "./assets/fonts/fonts";
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
 html,
 body {
     height: 100%;
@@ -62,11 +70,10 @@ footer {
     }
 }
 
-
 /* Importing Bootstrap SCSS file. */
 
 @import "./assets/styles/variables";
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 @import "./assets/styles/master";
 @import "./assets/styles/navbar";
 @import "./node_modules/@mdi/font/scss/materialdesignicons.scss";
@@ -74,11 +81,11 @@ footer {
     cursor: pointer;
 }
 
-.active {
-    // background: darken($color: #1b2d55, $amount: 10%) !important;
-    background: linear-gradient(150deg, rgba(0, 24, 143, 0.8) 0%, rgba(116, 0, 155, 0.8) 100%) !important;
-    color: #ffffff !important
-}
+// .active {
+//     // background: darken($color: #1b2d55, $amount: 10%) !important;
+//     background: linear-gradient(150deg, rgba(0, 24, 143, 0.8) 0%, rgba(116, 0, 155, 0.8) 100%) !important;
+//     color: #ffffff !important;
+// }
 
 .badge {
     padding: 4%;
@@ -86,8 +93,7 @@ footer {
 }
 
 .customBgCard-1 {
-    background: #6f16d3
-
+    background: #6f16d3;
 }
 
 .customColor1 {
@@ -102,18 +108,15 @@ footer {
 }
 
 .customBgCard-2 {
-        background: #6f16d3
-
+    background: #6f16d3;
 }
 
 .customBgCard-3 {
-    background: #6f16d3
-
+    background: #6f16d3;
 }
 
 .customBgCard-4 {
-        background: #6f16d3
-
+    background: #6f16d3;
 }
 
 .customBg {
@@ -125,8 +128,8 @@ footer {
 }
 
 .customButton {
-    color: #D74657;
-    border-color: #D74657;
+    color: #d74657;
+    border-color: #d74657;
     transition: all 0.5s ease;
     &:hover {
         background: $accent-color;
@@ -158,7 +161,7 @@ body {
 
 .profile-logo-mini {
     width: 15%;
-    border: 1px solid #FAC1BE;
+    border: 1px solid #fac1be;
     display: inherit;
     box-shadow: 3px 2px 15px 0px rgba(184, 154, 153, 0.81);
 }
@@ -267,5 +270,10 @@ body {
         width: 90%;
     }
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+body{
+    a{
+        color: #000000 !important;
+    }
+}

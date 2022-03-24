@@ -2,17 +2,21 @@
 
 <p-confirmDialog [style]="{width: 'auto'}" key="positionDialog" position="top-center" [baseZIndex]="10000">
 </p-confirmDialog>
-<div class="container-fluid">
+<div class="content-wrapper">
     <div class="m-3 row justify-content-between flex-row-reverse">
-        <button class="float-right" type="button" (click)="show()" pButton icon="pi pi-user-plus" label="Add"></button>
-        <button class="float-right" type="button" (click)="refresh=false;getAdmins();" pButton icon="pi pi-refresh" label="Refresh"></button>
+        <button class="float-right btn customButtonBlue" type="button" (click)="show()">
+            <i class="pi pi-user-plus"></i> Add
+        </button>
+        <button class="float-right btn customButtonBlue" type="button" (click)="refresh=false;getAdmins();">
+            <i class="pi pi-refresh"></i> Refresh
+        </button>
 
     </div>
     <div class="col alert alert-danger" *ngIf="errFlag|| !adminData">
         No Data Found
     </div>
     <div class="m-2 row justify-content-around">
-        <div class="card col">
+        <div class="card">
             <div class="card-header border-0">
                 <h4>Admin Data</h4>
             </div>

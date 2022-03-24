@@ -3,62 +3,16 @@
     <mat-form-field class='col-sm-12 col-md-6 mx-auto px-5 ' appearance='legacy'>
         <mat-icon matSuffix>search</mat-icon>
         <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
-        <!-- <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-            <mat-icon>close</mat-icon>
-        </button> -->
     </mat-form-field>
-    {{displayedColumns|json}}
+    <!-- {{displayedColumns|json}} -->
     <div class="table-responsive">
         <table mat-table [dataSource]="data" class="col-12 text-center table align-middle" matSort>
 
             <ng-container [matColumnDef]="title" *ngFor="let title of displayedColumns" class="">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> {{title}} </mat-header-cell>
-                <mat-cell *matCellDef="let element" class="px-2 justify-content-center">
-                    <div [ngSwitch]="title">
-                        <div *ngSwitchCase="'image'" style="cursor: pointer;">
-                            <div class="d-md-flex sm-block justify-content-center align-items-center customNav"
-                                (click)="navigateTo(element)">
-                                <img [src]="element.image||'./assets/img/dummy.png'" [alt]=""
-                                    class='w-25 rounded-circle me-3' /> {{element[title]}}
-                            </div>
-                        </div>
-                        <div *ngSwitchCase="'profileImg'" style="cursor: pointer;">
-                            <div class="d-md-flex sm-block justify-content-center align-items-center customNav"
-                                (click)="navigateTo(element)">
-                                <img [src]="element.profileImg||'./assets/img/dummy.png'" [alt]=""
-                                    class='w-25 rounded-circle me-3' /> {{element[title]}}
-                            </div>
-                        </div>
-                        <div *ngSwitchCase="'name'" style="cursor: pointer;">
-                            <div class="d-md-flex sm-block justify-content-center align-items-center customNav"
-                                (click)="navigateTo(element)">
-                                {{element[title]}}
-                            </div>
-                        </div>
-                        <div *ngSwitchCase="'fullName'" style="cursor: pointer;">
-                            <div class="d-md-flex sm-block justify-content-center align-items-center customNav"
-                                (click)="navigateTo(element)">
-                                {{element[title]}}
-                            </div>
-                        </div>
-                        <div *ngSwitchCase="'patientName'" style="cursor: pointer;">
-                            <div class="d-md-flex sm-block justify-content-center align-items-center customNav"
-                                (click)="navigateTo(element)">
-                                {{element[title]}}
-                            </div>
-                        </div>
-                        <div *ngSwitchCase="'rating'">
-                            <mat-star-rating [rating]="data[head]?.score"></mat-star-rating>
-                            {{(element[title]?.ratingCount)}}
-                        </div>
-                        <!-- <div *ngSwitchCase="'status'">
-                            
-                        </div> -->
-                        <div *ngSwitchDefault>
-                            {{ element[title]}}
-                        </div>
-                    </div>
-                    <!-- <span> {{element[title]}}</span>   -->
+                <mat-cell *matCellDef="let element" class="px-2 justify-content-center" (click)="navigateTo(element)" style="cursor: pointer;">
+                    {{element[title]}}
+
                 </mat-cell>
             </ng-container>
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -67,6 +21,6 @@
                 <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
             </tr>
         </table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
     </div>
 </ng-container>

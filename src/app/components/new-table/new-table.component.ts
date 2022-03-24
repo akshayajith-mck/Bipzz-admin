@@ -43,34 +43,6 @@ export class NewTableComponent implements AfterViewInit {
         // this.fnSelect = "userList";
         break;
       }
-      case "facilitatorList": {
-        this.facilitatorList();
-        break;
-      }
-      case "nonfacilitatorList": {
-        this.nonfacilitatorList();
-        break;
-      }
-      case "nonDoctorData": {
-        this.doctorNon();
-        break;
-      }
-      case "doctorverified": {
-        this.doctorVerify();
-        break;
-      }
-      case "appointmentList": {
-        this.AppointmentList();
-        break;
-      }
-      case "facilitatorProfileDoctor": {
-        this.facilitatorProfileDoctor();
-        break;
-      }
-      case "recentFacilitators": {
-        this.getRecentFacilitators();
-        break;
-      }
       default:
         this.messageService.add({
           severity: "error",
@@ -91,27 +63,6 @@ export class NewTableComponent implements AfterViewInit {
   userList() {
     this.displayedColumns = tableHead[0].userList;
   }
-  facilitatorList = () => {
-    this.displayedColumns = tableHead[0].facilitator;
-  };
-  nonfacilitatorList = () => {
-    this.displayedColumns = tableHead[0].nonfacilitator;
-  };
-  facilitatorProfileDoctor = () => {
-    this.displayedColumns = tableHead[0].nonDoctors;
-  };
-  doctorNon() {
-    this.displayedColumns = tableHead[0].nonDoctors;
-  }
-  doctorVerify() {
-    this.displayedColumns = tableHead[0].nonDoctors;
-  }
-  AppointmentList() {
-    this.displayedColumns = tableHead[0].appointmentList;
-  }
-  getRecentFacilitators() {
-    this.displayedColumns = tableHead[0].recentFacilitators;
-  }
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -127,33 +78,6 @@ export class NewTableComponent implements AfterViewInit {
         this.router.navigate(["/pages/management/user/profile" || "/"], {
           queryParams: { profileId: data.id || data.userId },
         });
-        break;
-      }
-      case "facilitatorList": {
-        this.router.navigate(["/pages/management/vendor/profile" || "/"], {
-          queryParams: { profileId: data.facilitatorId },
-        });
-        break;
-      }
-      case "nonfacilitatorList": {
-        this.router.navigate(["/pages/management/vendor/profile" || "/"], {
-          queryParams: { profileId: data.facilitatorId },
-        });
-        break;
-      }
-      case "appointmentList": {
-        this.router.navigate(["/pages/management/event/eventProfile" || "/"], {
-          queryParams: { profileId: data.appointmentId || data.id },
-        });
-        break;
-      }
-      case "nonDoctorData": {
-        this.router.navigate(
-          ["/pages/management/vendor/listProfile" || "/"],
-          {
-            queryParams: { profileId: data.doctorId || data.id },
-          }
-        );
         break;
       }
       default: {
