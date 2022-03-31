@@ -14,13 +14,8 @@ import { DynamicDialogRef } from "primeng/dynamicdialog";
 })
 export class ProfileComponent implements OnInit {
   err: any;
-  userId: any;
   profileData: any;
   profileId: any;
-  inputData: any;
-  inputErr: any;
-  quoteData: any;
-  baseurl: any;
   refresh = true;
   public files;
   @ViewChild("fileInput")
@@ -30,7 +25,6 @@ export class ProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private data: DataService,
-    // tslint:disable-next-line:align
     private messageService: MessageService,
     public dialogService: DialogService
   ) {}
@@ -38,20 +32,13 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.profileId = params.profileId;
-      console.log({ params });
     });
-    // this.userProfile(this.profileId);
-    this.baseurl = this.data.baseurl;
+    this.userProfile(this.profileId);
   }
-  // userProfile(id): void {
-  //   console.log(id);
-  //   this.data.getUser(id).subscribe(
-  //     (data: any) => ((this.profileData = data), (this.refresh = true)),
-  //     (err) => (this.err = err)
-  //   );
-  // }
-  
-  onClickFileInputButton(): void {
-    this.fileInput.nativeElement.click();
+  userProfile(id): void {
+    this.data.getUserProfile(id).subscribe(
+      (data: any) => ((this.profileData = data), (this.refresh = true)),
+      (err) => (this.err = err)
+    );
   }
 }

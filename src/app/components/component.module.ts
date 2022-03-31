@@ -11,7 +11,6 @@ import { CardComponent } from "src/app/components/card/card.component";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { PaginatorModule } from "primeng/paginator";
-import { StarRatingModule } from "./star-rating/star-rating.module";
 import { NewTableModule } from "./new-table/new-table.module";
 @NgModule({
   imports: [
@@ -22,7 +21,6 @@ import { NewTableModule } from "./new-table/new-table.module";
     NgbModule,
     MatPaginatorModule,
     ComponentModules,
-    StarRatingModule,
     NewTableModule,
   ],
   declarations: [

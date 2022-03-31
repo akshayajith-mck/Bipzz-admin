@@ -7,7 +7,6 @@ import { MatTableModule } from "@angular/material/table";
 import { ToastModule } from "primeng/toast";
 import { NewTableComponent } from "./new-table.component";
 import {MatCardModule} from '@angular/material/card';
-import { StarRatingModule } from "../star-rating/star-rating.module";
 import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
@@ -19,7 +18,6 @@ import { MatIconModule } from "@angular/material/icon";
     MatInputModule,
     MatCardModule,
     MatPaginatorModule,
-    StarRatingModule,
     MatIconModule
   ],
   exports: [NewTableComponent],

@@ -35,8 +35,8 @@ export class NewTableComponent implements AfterViewInit {
   data!: any;
   ngOnInit(): void {
     this.data = new MatTableDataSource(this.inputData);
-    console.log("inputData", this.inputData);
-    console.log(this.flag, "flag");
+    // console.log("inputData", this.inputData);
+    // console.log(this.flag, "flag");
     switch (this.flag) {
       case "userList": {
         this.userList();

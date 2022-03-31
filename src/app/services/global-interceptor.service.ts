@@ -17,7 +17,7 @@ export class GlobalInterceptorService {
   }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let currentReq = req;
-    if (this.auth.isAuthorized) {
+    if (this.auth.isAuthorized()) {
       const token = this.auth.getToken();
       currentReq = req.clone({ setHeaders: { Authorization: 'Bearer ' + token } });
     } 

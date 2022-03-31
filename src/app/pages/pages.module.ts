@@ -10,6 +10,7 @@ import { CommonModule } from "@angular/common";
 import { PagesRoutingModule } from "./pages-routing.module";
 
 import { PagesComponent } from "./pages.component";
+import { MatInputModule } from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PagesComponent } from "./pages.component";
     PagesRoutingModule,
     FormsModule,
     AngularMaterialModule,
+    MatInputModule
   ],
 })
 export class PagesModule {}

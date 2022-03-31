@@ -10,10 +10,18 @@ const routes: Routes = [
     component: PagesComponent,
     children: [
       {
+        path: "push-notifications",
+        loadChildren: () =>
+          import("./push-notifications/push-notifications.module").then(
+            (m) => m.PushNotificationsModule
+          ),
+      },
+      {
         path: "admin",
         loadChildren: () =>
           import("./admin/admin.module").then((m) => m.AdminModule),
       },
+      
       {
         path: "management",
         children: [

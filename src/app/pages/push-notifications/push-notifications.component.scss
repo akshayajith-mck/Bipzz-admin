@@ -1,0 +1,38 @@
+mat-form-field {
+    display: block;
+    margin: 5% 0;
+    width: 100%;
+    text-align: start;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 3%;
+}
+
+.card-header {
+    color: #ffffff;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+background: #0097A7;
+color: #ffffff;
+margin: 5% 0;
+}
+
+form{
+    width: 90%;
+    text-align: center;
+}
+
+textarea.mat-input-element{
+    padding: 3%;
+}

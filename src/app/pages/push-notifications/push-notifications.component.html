@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="card login-form mx-auto mt-5">
+        <div class="card-header">
+            <h3>Send Flash Notifications</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="pushNotificationForm" (ngSubmit)="onSubmit(pushNotificationForm.value)">
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="title" placeholder="Enter your Title">
+                    <mat-error *ngIf="!pushNotificationForm.controls['title'].valid">
+                        Please enter Title.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <textarea matInput rows="4" formControlName="message" placeholder="Enter your Message"></textarea>
+                    <mat-error *ngIf="!pushNotificationForm.controls['message'].valid">
+                        Please enter Message.
+                    </mat-error>
+                </mat-form-field>
+                <div style="text-align: start;">
+                    <input type="file" style="display: none" #fileInput accept="image/*" (change)="onFileChangeInput()" />
+                    <button type="button" mat-raised-button color="fill" class="file-select-button" (click)="onClickFileInputButton()">
+                        Set Notification Image
+                        <mat-icon>attach_file</mat-icon>
+                    </button>
+                </div>
+                <!-- <mat-form-field appearance="outline">
+                    <input  formControlName="image">
+                    <button type="button" class="btn" (click)="onClickFileInputButton()">
+                        Image
+                    </button>
+                </mat-form-field> -->
+                <button type="submit" class="btn"
+                    [disabled]="!pushNotificationForm.value.message||!pushNotificationForm.value.title">
+                    Submit Notification
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

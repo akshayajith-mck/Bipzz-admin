@@ -1,7 +1,8 @@
 <div class="card card-rounded">
 
-    <div class="card-header bg-customPrimary">
+    <div class="card-header bg-customPrimary d-flex justify-content-between">
         <h4>{{title}}</h4>
+        Total Users: {{userCount?userCount:N/A}}
     </div>
     <div class="card-body" [ngSwitch]='type'>
         <div class="col-sm-12" *ngSwitchCase="'tableType'">

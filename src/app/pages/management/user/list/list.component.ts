@@ -14,7 +14,7 @@ export class ListComponent implements OnInit {
   err: any;
   refresh = true;
   constructor(
-    private Data: DataService,
+    private data: DataService,
     private messageService: MessageService,
     public dialogService: DialogService
   ) {}
@@ -23,9 +23,8 @@ export class ListComponent implements OnInit {
     this.getUserDetails();
   }
   getUserDetails(): void {
-    this.Data.getUsers().subscribe(
+    this.data.getUsers().subscribe(
       (data: any) => {
-        console.log(data);
         this.userList = data;
         this.refresh = true;
       },
