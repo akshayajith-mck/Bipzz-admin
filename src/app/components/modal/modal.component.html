@@ -3,30 +3,6 @@
     <div class="card-body">
         <div [ngSwitch]='flag'>
             <app-admin-creation *ngSwitchCase='"adminCreation"'></app-admin-creation>
-            <app-user-creation *ngSwitchCase='"userCreation"'></app-user-creation>
-            <app-vendor-creation *ngSwitchCase='"facilitatorCreation"'></app-vendor-creation>
-            <app-user-updation *ngSwitchCase='"userUpdation"' [inputData]='inputData'></app-user-updation>
-            <app-blog-creation *ngSwitchCase='"blogCreation"'></app-blog-creation>
-
-            <app-vendor-updation *ngSwitchCase='"facilitatorUpdation"' [inputData]='inputData'></app-vendor-updation>
-            <app-faq-updation *ngSwitchCase='"faq"' [inputData]='inputData'></app-faq-updation>
-            <div *ngSwitchCase='"promotions"'>
-                <app-promotion-updation *ngIf="inputData" [inputData]='inputData'></app-promotion-updation>
-                <app-promotion-creation *ngIf="!inputData"></app-promotion-creation>
-            </div>
-            <div *ngSwitchCase='"banner"'>
-                <app-banner-Creation *ngIf="!inputData"></app-banner-Creation>
-                <app-banner-Updation *ngIf="inputData" [inputData]='inputData'></app-banner-Updation>
-            </div>
-
-            <div *ngSwitchCase='"subscription"'>
-                <app-subscription-updation *ngIf="inputData" [inputData]='inputData'>
-                </app-subscription-updation>
-                <app-subscription-creation *ngIf="!inputData"></app-subscription-creation>
-            </div>
-            <app-album-list *ngSwitchCase='"album"' [inputData]='inputData'></app-album-list>
-            <app-get-liveUpdate *ngSwitchCase='"liveUpdate"' [inputData]='inputData'></app-get-liveUpdate>
-            <app-dash-search *ngSwitchCase='"dashSearch"' [inputData]='inputData'></app-dash-search>
             <span *ngSwitchDefault> OOps</span>
         </div>
     </div>

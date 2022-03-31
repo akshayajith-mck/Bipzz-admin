@@ -1,4 +1,5 @@
 export const environment = {
-  production: false,
-  // apiBaseUrl: 'http://13.232.188.137/'
+  production: true,
+  apiBaseUrl: 'https://bipzz.in/server/'
+  // apiBaseUrl: 'https://13.232.188.137/'
 };

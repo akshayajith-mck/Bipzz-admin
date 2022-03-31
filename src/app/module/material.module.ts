@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
     imports: [
         MatFormFieldModule,
@@ -31,7 +32,8 @@ import {MatSelectModule} from '@angular/material/select';
         MatListModule,
         MatInputModule,
         MatSelectModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatCheckboxModule
     ],
     exports: [
         MatFormFieldModule,
@@ -50,7 +52,7 @@ import {MatSelectModule} from '@angular/material/select';
         MatInputModule,
         MatSelectModule,
         ReactiveFormsModule,
-
+        MatCheckboxModule
 
     ],
     providers: [

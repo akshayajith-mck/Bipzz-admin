@@ -22,17 +22,31 @@ textarea {
     align-items: center;
 }
 
-button{
-background: #0097A7;
+button {
+    background: #0097A7;
 color: #ffffff;
 margin: 5% 0;
 }
 
-form{
+form {
     width: 90%;
     text-align: center;
 }
 
-textarea.mat-input-element{
+textarea.mat-input-element {
     padding: 3%;
+}
+
+input[type="file"]::file-selector-button {
+    background: #0097a7;
+    color: #ffffff;
+    margin: 5% 0;
+    padding:1% 5%;
+    border-radius: 3px;
+    border: none;
+    &:hover {
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        transform: translateY(-1px);
+    }
 }

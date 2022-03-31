@@ -3,9 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiBaseUrl: "http://localhost:3000/",
-  // apiBaseUrl: 'http://13.232.188.137/'
+  production: true,
+  // apiBaseUrl: "http://localhost:3000/",
+  apiBaseUrl: 'https://bipzz.in/server'
+  // apiBaseUrl: 'https://13.232.188.137/'
 };
 
 /*

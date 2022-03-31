@@ -1,6 +1,6 @@
 {
     "/server/*": {
-        "target": "http://localhost:3000/",
+        "target": "http://13.232.188.137/",
         "secure": false,
         "logLevel": "debug"
     }

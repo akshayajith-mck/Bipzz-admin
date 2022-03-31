@@ -7,15 +7,15 @@ import { Injectable } from "@angular/core";
 })
 export class DataService {
   baseurl = environment.apiBaseUrl;
-  url = this.baseurl + "api";
+  // url = this.baseurl + "api";
   APIList = {
-    login: this.url + "/admin/login",
-    createAdmin: this.url + "/admin/createAdmin",
-    admin: this.url + "/admin/all",
-    adminDelete: this.url + `/admin/deleteAdmin`,
-    count: this.url + "/admin/getCount",
-    users: this.url+ "/admin/allUsers",
-    sendNot:this.url +"/v1/createNotification"
+    login: this.baseurl + "/admin/login",
+    createAdmin: this.baseurl + "/admin/createAdmin",
+    admin: this.baseurl + "/admin/all",
+    adminDelete: this.baseurl + `/admin/deleteAdmin`,
+    count: this.baseurl + "/admin/getCount",
+    users: this.baseurl+ "/admin/allUsers",
+    sendNoti:this.baseurl +"/v1/createNotification"
   };
   constructor(private http: HttpClient) {}
   login(data: any): Observable<any> {
@@ -28,15 +28,15 @@ export class DataService {
     return this.http.get(this.APIList.admin);
   }
   deleteAdmin(id): Observable<any> {
-    return this.http.delete(`${this.url}/admin/delete?userName=${id}`);
+    return this.http.delete(`${this.baseurl}/admin/delete?userName=${id}`);
   }
   getUsers():Observable<any>{
     return this.http.get(this.APIList.users);
   }
   getUserProfile(id):Observable<any>{
-    return this.http.get(`${this.url}/admin/userProfile?userId=${id}`);
+    return this.http.get(`${this.baseurl}/admin/userProfile?userId=${id}`);
   }
   sendNotification(param): Observable<any> {
-    return this.http.post(this.APIList.sendNot, param);
+    return this.http.post(this.APIList.sendNoti, param);
   }
 }

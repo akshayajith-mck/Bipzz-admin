@@ -27,22 +27,20 @@ export class PushNotificationsComponent implements OnInit {
       title: ["", Validators.required],
       message: ["", Validators.required],
       image: null,
+      serviceFlag: false,
     });
   }
   onSubmit(param): void {
-    // const params: FormData = new FormData();
-    // params.append("title", param.title);
-    // params.append("message", param.message);
-    // params.append("image", param.image);
-    const notification_Data :any[]= [
-      {
-        title: param.title || "",
-        message: param.message || "",
+    const data = {
+      notification_Data: {
+        message: param.message,
+        title: param.title,
         image: param.image || "",
+        serviceFlag: param.serviceFlag,
       },
-    ];
-    console.log(notification_Data);
-    this.data.sendNotification(notification_Data).subscribe(
+    };
+    console.log(data);
+    this.data.sendNotification(data).subscribe(
       (succ) => {
         this.messageService.add({
           severity: "success",
@@ -64,12 +62,12 @@ export class PushNotificationsComponent implements OnInit {
     );
   }
 
-  onFileChangeInput(): void {
-    const files: { [key: string]: File } = this.fileInput.nativeElement.files;
-    this.file = files[0];
-    this.pushNotificationForm.get("image").setValue(this.file);
-  }
-  onClickFileInputButton(): void {
-    this.fileInput.nativeElement.click();
-  }
+  // onFileChangeInput(): void {
+  //   const files: { [key: string]: File } = this.fileInput.nativeElement.files;
+  //   this.file = files[0];
+  //   this.pushNotificationForm.get("image").setValue(this.file);
+  // }
+  // onClickFileInputButton(): void {
+  //   this.fileInput.nativeElement.click();
+  // }
 }
