@@ -21,18 +21,14 @@
                     <mat-checkbox formControlName="serviceFlag">Service Flag</mat-checkbox>
                 </div>
                 <div style="text-align: start;">
-                    <input type="file" formControlName="image" #fileInput accept="image/*"  />
-                    <!-- <button type="button" mat-raised-button color="fill" class="file-select-button" (click)="onClickFileInputButton()">
+                    <!-- <input type="file" formControlName="image" #fileInput accept="image/*"/> -->
+                    <input type="file" style="display: none" #fileInput accept="image/*" (change)="onFileChangeInput()" />
+                    <button type="button" mat-raised-button color="fill" class="file-select-button" (click)="onClickFileInputButton()">
                         Set Notification Image
                         <mat-icon>attach_file</mat-icon>
-                    </button> -->
-                </div>
-                <!-- <mat-form-field appearance="outline">
-                    <input  formControlName="image">
-                    <button type="button" class="btn" (click)="onClickFileInputButton()">
-                        Image
                     </button>
-                </mat-form-field> -->
+                    <mat-label class="m-4" *ngIf="this.pushNotificationForm.get('image').value">{{this.pushNotificationForm.get('image').value.name|json}}</mat-label>
+                </div>
                 <button type="submit" class="btn"
                     [disabled]="!pushNotificationForm.value.message||!pushNotificationForm.value.title">
                     Submit Notification

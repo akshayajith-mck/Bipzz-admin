@@ -10,7 +10,6 @@ import { DataService } from "src/app/services/data.service";
   providers: [MessageService],
 })
 export class PushNotificationsComponent implements OnInit {
-  json: any;
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
@@ -26,21 +25,25 @@ export class PushNotificationsComponent implements OnInit {
     this.pushNotificationForm = this.fb.group({
       title: ["", Validators.required],
       message: ["", Validators.required],
-      image: null,
-      serviceFlag: false,
+      image: "",
+      serviceFlag: "",
     });
   }
   onSubmit(param): void {
-    const data = {
-      notification_Data: {
-        message: param.message,
-        title: param.title,
-        image: param.image || "",
-        serviceFlag: param.serviceFlag,
-      },
-    };
-    console.log(data);
-    this.data.sendNotification(data).subscribe(
+    // param.serviceFlag ? "blog" : "";
+    if (param.serviceFlag === true) {
+      param.serviceFlag = "blog";
+    } else {
+      param.serviceFlag = "";
+    }
+    console.log(param.serviceFlag);
+    const params: FormData = new FormData();
+    params.append("title", param.title);
+    params.append("message", param.message);
+    params.append("image", param.image);
+    params.append("serviceFlag", param.serviceFlag);
+    console.log(params);
+    this.data.sendNotification(params).subscribe(
       (succ) => {
         this.messageService.add({
           severity: "success",
@@ -49,6 +52,7 @@ export class PushNotificationsComponent implements OnInit {
           summary: "Info Message",
           detail: succ.message,
         });
+        window.location.reload();
       },
       (err) => {
         this.messageService.add({
@@ -61,13 +65,12 @@ export class PushNotificationsComponent implements OnInit {
       }
     );
   }
-
-  // onFileChangeInput(): void {
-  //   const files: { [key: string]: File } = this.fileInput.nativeElement.files;
-  //   this.file = files[0];
-  //   this.pushNotificationForm.get("image").setValue(this.file);
-  // }
-  // onClickFileInputButton(): void {
-  //   this.fileInput.nativeElement.click();
-  // }
+  onFileChangeInput(): void {
+    const files: { [key: string]: File } = this.fileInput.nativeElement.files;
+    this.file = files[0];
+    this.pushNotificationForm.get("image").setValue(this.file);
+  }
+  onClickFileInputButton(): void {
+    this.fileInput.nativeElement.click();
+  }
 }

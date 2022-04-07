@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  // apiBaseUrl: "http://localhost:3000/",
+  // apiBaseUrl: "http://localhost:3000/api",
   apiBaseUrl: 'https://bipzz.in/server'
   // apiBaseUrl: 'https://13.232.188.137/'
 };
